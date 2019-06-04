@@ -1,0 +1,128 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Terence L. van Zyl
+%
+% Affiliation: Wits Institute of Data Science 
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definecolor{barblue}{RGB}{153,204,254}
+\definecolor{groupblue}{RGB}{51,102,254}
+\definecolor{linkred}{RGB}{165,0,33} 
+
+\chapter{Research Plan}
+\section{Introduction}
+This chapter presents outline of different tasks that will be undertaken to complete the research work. A set of major tasks called deliverables is listed. Under each deliverable are sub-tasks that need to be done in order to complete a deliverable. Section \ref{deliverables} describes each deliverable, Section \ref{timePlan} depicts a time plan, showing interleaved and concurrent tasks, and Section \ref{concl} conclude the chapter.       
+
+\section{Deliverables} \label{deliverables}
+
+The deliverables of this research will be\footnote{All titles, journals and conferences are tentative.}:
+\begin{description}
+\item[Research proposal] This document completed and approved. % introduction, read on works relating to , 
+\item[Data collection and Experiements] Design and implementation of Web scraper  and semi automated labeling tool.
+% take online turotials on how to do webcraper in python. 
+% Field Data collection Collection, labeling of Lion and Cheetah corpus.
+\item[Conference proceedings] ``Author Identification using Siamense Convolutional Neural Network (SCCN)'' in proceeding of IEEE IMITEC Information \& Communication Systems \/ Technologies 
+\item[Implementation of Deep neural network SCNN] Develop, train and evaluate CNN on corpus
+%% p skill on how to use pytorch, running experiemnt on google colab gpus
+%% architecture of cnns.  
+
+\item[Draft dissertaion] First draft write up of dissertation, introduction and conclusion.
+\item[Draft dissertation] First draft literature review
+
+\item[Correction of Draft] Do corrections on first draft. 
+
+\end{description}
+
+\section{Time Plan} \label{timePlan}
+\begin{theo}[In this Section]{}
+Can be in either a table or gantt chart or both.
+\end{theo}
+
+The gantt chart for this research proposal is available in
+
+Table~\ref{tab:gannt_chart}.
+
+%\begin{ganttchart}[
+ % x unit=0.5mm,
+ % time slot format={isodate},
+ % ]{2019-07-01}{2020-06-30}
+ % \gantttitlecalendar{year, month} \\
+ % \ganttbar{Test}{2019-07-01}{2020-03-15}
+%\end{ganttchart}
+
+\begin{sidewaystable}[htbp]
+\caption{Gantt Chart for Time Plan.}\label{tab:gannt_chart}
+
+\newgeometry{vmargin=1cm}
+%\begin{landscape}
+\thispagestyle{empty}\centering
+\begin{ganttchart}[vgrid={draw=none,draw=none},%
+            %today=15,%
+            %today offset=.5,%
+            %today label=Heute,%
+            %progress=today,%
+            y unit title=0.7cm,
+            y unit chart=0.6cm,
+            bar incomplete/.append style={fill=red},%
+            progress label text=  {\quad\pgfmathprintnumber[precision=0,verbatim]{#1}\%}%
+            ]{1}{36}
+\gantttitlecalendar*[compress calendar,time slot format=isodate]{2019-11-2}{2020-11-30}{year, month} \\
+\gantttitlelist{1,...,36}{1}\\
+\ganttgroup{Masters work}{1}{36} \\
+ %%%%%%%%%%%%%%%%%Phase-1
+\ganttgroup{Research Proposal}{1}{13} \\
+\ganttbar{Scope Reading formulate topic}{1}{2} \\
+\ganttbar{Literature Review}{2}{5} \ganttnewline
+\ganttbar{Draft introduction chapter}{3}{7} \ganttnewline
+\ganttlinkedbar{Consultation}{8}{8} \ganttnewline
+\ganttlinkedbar{Make corrections introduction}{9}{9} \ganttnewline
+\ganttmilestone{finalize introduction chapter}{10}\ganttnewline
+\ganttbar{Draft Methodology chapter}{5}{10} \ganttnewline
+\ganttlinkedbar{Consultation on methodology}{11}{11} \ganttnewline
+\ganttlinkedbar{Make corrections Methodology}{11}{12} \ganttnewline
+\ganttmilestone{Conclude methodology}{12}\ganttnewline
+\ganttbar{Draw research plan}{10}{11} \ganttnewline
+\ganttlinkedbar{prepare for Proposal defence}{12}{13}\ganttnewline
+\ganttmilestone{Proposal defence}{13}\ganttnewline
+\ganttlinkedbar{Make corrections}{13}{13}\ganttnewline
+\ganttmilestone{Submit Proposal}{13}\ganttnewline
+\ganttlink{elem6}{elem7}
+\ganttlink{elem10}{elem11}
+\ganttlink{elem13}{elem14}
+\ganttlink{elem15}{elem16}
+
+
+%%%%%%%%%%%%%%%%%Phase-2
+\ganttgroup{Data \& Experimental setup}{5}{32} \\
+\ganttbar{Development of data labelling tool }{5}{15} \\
+\ganttbar{Development of source code SCNN}{5}{16} \ganttnewline
+\ganttbar{Collect \& Label data}{6}{26} \ganttnewline 
+\ganttmilestone{Finalize data set: Train and test split}{26} \ganttnewline
+\ganttbar{Run training \& evaluation }{12}{28} \ganttnewline
+\ganttlinkedbar{Analyze \& document results}{18}{29} \ganttnewline
+\ganttmilestone{Discuss: Results with Supervisor}{30} \ganttnewline
+\ganttlinkedbar{Make corrections}{31}{31} \ganttnewline
+\ganttlink{elem20}{elem21}
+\ganttlink{elem23}{elem24}
+ %%%%%%%%%%%%%%%%%Phase-3
+\ganttgroup{Conference paper}{24}{31} \\
+
+\ganttbar{Draft Discussion of results}{24}{27} \\
+\ganttlinkedbar{Publications $\&$ Workshops}{27}{30} \ganttnewline
+\ganttgroup{Thesis writing}{24}{35} \\
+\ganttlinkedbar{Draft introduction \& conclusion}{30}{35} \ganttnewline
+\ganttmilestone{Submit Thesis draft}{35}
+\ganttlink{elem30}{elem31}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{ganttchart}
+
+\end{sidewaystable}
+
+
+\section{Potential Issues}\label{issues}
+None
+
+\section{Conclusion}
+\label{concl}

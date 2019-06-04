@@ -1,0 +1,118 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Terence L. van Zyl
+%
+% Affiliation: Wits Institute of Data Science 
+%
+% Template license:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Introduction} %Introduction
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content 
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+%----------------------------------------------------------------------------------------
+
+\section{Background} %Body
+
+\subsection{Automated Identification based on image traps}
+
+Identification of objects is selecting an object among other objects based on unique features represented by one object \cite{jain2007handbook}. According to Jain et al. 2004 \cite{jain2004introduction} there are conditions attached to such features before they can be used in uniquely identify an object: The features need to be universal; all the objects in same class must have such features. Any two objects must present a unique shape or form of the same feature. Additionally the features should not change over for a long period of time.
+
+Duda et al. 2012 \cite{duda2012pattern} supports the argument made about the features that are used for uniquely identifying an object and further stated that a sensing device is required to capture the signal that represent such unique features. Cameras are used to capture images of fingerprints so as apply computer models that extract features that uniquely identify one person from a group of other people.
+Identification was employed to classify people based on face images, and animals based on coat patterns. Automated identification have been applied other various fields like: medical to detect malignant cells \cite{khan2019novel}. Identification can also be applied in text analysis to detect spam emails \cite{faris2019intelligent}. 
+
+The fields in which automated identification is applied varies greatly, however all the previous works look at unique features that are used to discriminate dissimilar objects of same class.    
+
+\subsection{Research Problem} 
+
+Identification of individuals using biological and behavioral features falls in bio-metrics field \cite{jain2004introduction}. Automated Individual identification has been studied extensively in human beings using face images as signals that provides discriminating features among faces of different people \cite{turk1991face}. Matthwe et al. 1999 \cite{turk1991face} extracted feature vectors that are relevant in distinguishing faces of different people. These feature were called eigenfaces. For identification purposes, a new face is projected to the eigenfaces space, a comparison is made to see which of the eigenfaces in database is close enough to the new face features by computing an Euclidean distance between known and new face eigenfaces. This work made assumptions that faces are usually upright, therefore the feature space was created based on upright faces. However, this assumption will hold on face images taken from a controlled environment. This luxury can be attained with human beings, but its application is limited. Considering applying a similar approach to identifying wild animals can create problems because there is a limited chance to take a controlled face image of free roaming Lion.      
+
+\citet{schroff2015facenet} 2015 and \citet{parkhi2015deep} 2015 developed a way of identification taking into account that face images of same person can vary in posture, lighting and expression. This removed the assumption that faces are usually upfront. This way of extracting features could be applicable to learning  features of animal face images because the posture of animal face may vary greatly. \citet{schroff2015facenet} 2015 trained a deep convolutional neural network to recognise faces from images. An embedding is extracted from an image. Using a tripletloss approach, which takes three images; an anchor image, positive image and a negative image. The network learns to minimize an euclidean distance between embeddings of anchor and positive images, and increases the distance between anchor and negative image. The positive image is any face image of the same subject, it may be a different face orientation or lighting condition. The negative image is face image of a different subject. A hyper-parameter $\alpha$ was used to force a certain distance from anchor and all negative images. One advantage Schroff et al. have is the amount of training data at their disposal: over  $100$ million images from $8$ million different subjects. They reported varying accuracies on different datasets between 95.18\% and  99.63\%. Such results encourages one to apply these techniques in endangered animal identification, however there number of animal images from South Africa game reserves is too low. It will be interesting to see the performance of this approach in animal data. 
+
+Automated identification of animals has been focused on species identification \cite{parham2018animal}. \cite{norouzzadeh2018automatically} 2018 developed a pipeline for classification of species based on segmented sections of an image. The image segments called bounding boxes, were compared to labelled bound boxes of 6 species. They capitalized on different coat patterns presented by various species: coat pattern of zebra are distinct from coat patterns of giraffes. A bounding box is annotated with a specie label if it present a higher degree of similarity with known coat patterns the specie, compared to other species. \citet{kuhl2013animal} asserted that other than just discriminating species, coat patterns can be used as feature in discriminating individuals of the same specie.
+
+Recent work has been done on identifying individual farm animals \cite{kumar2017real}. \citet{kumar2017real} reflected on the importance knowing where each farm cow is located, and how many unique individuals are there in a farm. The benefits of identifying an individual lies in efficient record keeping about the individual, ability to track and count all known individuals, and easily recognize the missing. Computer assisted  identification of animals have reduced the manual labour from custodians of farms, and also improved reliability of records about each individual. \citet{kuhl2013animal} observed that automated identification of individual animal have far reaching benefits in conservation research. The changes of an individual due to aging or habitat changes can be observed to determine if descendants of the individual exhibits similar adaptations to such changes. Interventions could be made to ensure individualized care should there be a need to ensure decedents of an individual can be assisted to adapt better to external changes. Automated identification also present an non invasive way of tracking individuals compared to previous methods used in identification. \citet{kuhl2013animal} further argues that collaring and implants are invasive ways of identification and may cause changes in behaviour, reproduction and ability to survive for individual animal. These have negative effects on conservation initiatives, may further decrease endangered species.
+
+
+These benefits are relevant in endangered wild animals; there is work ongoing to keep records of species for tourist attraction and nature conservation purposes in South African reserves \cite{marnewick2008evaluating}.
+
+- animal biometrics
+- kruger data Kelly data analysis
+- highlight manual process and susptible to human errors 
+- species drops, who exaclty. 
+
+\subsection{Finally}
+The move towards identification and classification based on images has been towards the use of deep neural networks.  \cite{hughes2017automated}  .... finn sharks identifcation,
+chipazze identifcatino \cite{loos2013automated}
+hOW THE FIELD HAS EVALOVED \cite{weinstein2018computer}
+
+----Wilc anima ldetection  deep  \cite{verma2018wild}
+-- species detectsion deep nets -- 
+---- idinvidual animal identfication \cite{schneider2019similarity}
+
+\section{Problem Statement}
+ %-----      IDEAL  -------%
+Nature conservation initiatives are growing worldwide, and governments have pass acts aimed at protecting an preservation of endangered species. Animals are kept in protected in large areas, ensuring that their natural habitat is maintained ,and that they are existence is preserved. 
+%  --------  REALITY   ---------%
+Such areas are difficult to reach on a daily basis by personnel employed to keep records of animals. Identifying and counting the species is a challenge because these animals are roaming in the wild. Identifying missing animals for proper record keeping is a cumbersome and dangerous job, an prone to human mistakes. Accurate record keeping is labour intensive, manual, and difficult to verify in a reliable way.  
+
+%    ----- IMPROVEMENTS------   %
+Deep neural networks has been used successfully in identifying individual human beings using face images \cite{parkhi2015deep} \cite{schroff2015facenet}. We propose applying deep neural networks in automating individual animal identification to improve the reliability of wildlife record keeping. 
+
+\section{Significance and Motivation}
+Endangered  animals in South Africa are on the decline, and effort to curb this are being investigated \cite{marnewick2008evaluating}. Approaches to assist in this should be  multi-disciplinary. While Marnewick et al. 2018 \cite{marnewick2018cheetaprob} is leading data collection, counting and reporting on wildlife in major parks found in South Africa, their strategies involve collaring individuals for identification purposes. 
+This work would like to investigate none-invasive means of identification, to avoid the adverse effects collaring and other invasive identification methods. 
+
+The successes made in computer vision discipline for automated image analysis for identification has brought opportunities that can be applied in individual animal identification though camera traps. It is envisioned that such approach will improved accuracy of reporting on wildlife demographics, and remove human error in individual animal identification. 
+
+%%% -------------------------------My Research aims and objectives ----------------------%%%
+\section{Research  aims  and Objectives}
+There is a need to assist wildlife protection initiatives with reliable record keeping of endangered animals for conservation and accurate reporting purposes. Knowing individual animals through computer assisted identification reduces human error in individual identification, and improves accuracy of animal records. This research aims to automate individual identification of wild animals through developing and evaluating a computer model. 
+
+The aim of this work will be achieved through the following objectives: 
+
+\begin{itemize}
+
+    \item To develop a deep convolutional neural network model for individual animal identification.
+    \item To develop a semi-automated animal data collection and labeling tool.
+    \item To evaluate the efficiency of the deep neural network model in identifying individual animal on the collected data.
+    \item To determine the performance of model on collected data, by measuring its accuracy, precision and recall. 
+    \item To compare the performance of the deep neural network model with existing animal identification systems. 
+    \item To analyze and write up on findings.  
+\end{itemize}
+%% ---------------------------%%%-------------------------------%%%-------------------------%%------------------------------
+\section{Research Questions}
+The main question of this research work is: 
+How can deep neural networks be used to automate individual animal identification the using camera trap images?
+
+The main question has been broken down into the following sub questions.
+\begin{itemize}
+    \item How can deep neural networks be used to reliably assist in record keeping about individual animal roaming in the wild?
+
+\end{itemize}
+
+\section{Delineations, Limitations and Assumptions}
+
+This research will only focus on endangered Lion and Cheetah populations found in Kruger National Park in South Africa. The Kruger National park is viable option because of its proximity. Time constrains have limited the work to focus on only the two species, Lion and Cheetah. More resources would be required so as to consider other endangered species.
+
+We cannot ascertain that the outcomes presented will generalize to other endangered species found in Kruger national park and other regions.
+
+This work relies on Human beings for labeling of individual animal images, and this labeling is assumed to be correct.
+
+\section{Definitions}
+Deep Neural networks \newline
+Siamese Neural Networks \newline
+Individual \newline
+Metric learning \newline
+
+\section{Outline}
+The rest of this proposal is organized as follows: \textbf{Chapter 2} discusses research methodology adopted in the work and reasons why this methodology is relevant. Chapter 2 also gives details on tools used to collect and label data, the descriptive statistics used and metrics measured during experimentation. \textbf{Chapter 3} provides a breakdown of deliverables and time-lines for these deliverable. A Gantt chart is presented to depict milestones, the critical path and concurrent deliverables. \textbf{Chapter 4} draws conclusion on the proposal by highlighting objectives, briefly discusses findings and conclusions drawn from the findings.  
