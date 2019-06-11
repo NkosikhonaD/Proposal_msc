@@ -12,15 +12,15 @@
 \section{Introduction}
 This chapter discusses the research design chosen for the current work and list research instruments used in collection and data labelling. This chapter further summaries investigations and outputs done by authors who tackled similar problem of Individual animal identification. The previous works will form a benchmark which the current research outputs will be compared to. The last part of this chapter provides guideline on what analysis will be conducted to describe the data, and measure the performance of our model.
 \subsection{Research Design}
-I will be undertaking a confirmatory experimental research. Experimental research in general allows the researcher to investigate how changing a dependent variable, while keeping other variables constant, affect outcomes. Confirmatory experimental research, extends experimental research by suggesting that researchers must state up-front the phenomenon investigated, and describe statistical methods that will be used to arrive at the findings before the data is seen. The phenomena to be investigated should be stated before the data is seen in order to avoid the temptation of fine tuning data; removing data points, so as to fit the expected outcomes of the research \cite{wagenmakers2012agenda}. Experimental research design was found appropriate for the current work because we would like to investigate how deep neural networks, Siamese convolutional neural network (SCNN) can assist in classifying an individual. I would investigate how altering the depth of the network will affect performance of the model. Other researches have conducted identification of Chimpanzees, we would like to see extend their work to see which model performance better in identifying a different species like Lions and Cheetahs.   
+I will be undertaking a confirmatory experimental research. Experimental research in general allows the researcher to investigate how changing a dependent variable, while keeping other variables constant, affect outcomes. Confirmatory experimental research, extends experimental research by suggesting that researchers must state up-front the phenomenon investigated, and describe statistical methods that will be used to arrive at the findings before the data is seen. The phenomena to be investigated should be stated before the data is seen in order to avoid the temptation of fine tuning data; removing data points, so as to fit the expected outcomes of the research \cite{wagenmakers2012agenda}. Experimental research design was found appropriate for the current work because we would like to investigate how deep neural networks, Siamese convolutional neural network (SCNN) can assist in classifying an individual. In the current work the depth of the network will be altered and observation made on how this alteration affects performance of the model. Other researches have conducted identification of Chimpanzees, we would like to extend their work to see which model performs better in identifying a different species such as Lions and Cheetahs.   
 \section{Methodology}\label{methodology}
 \subsection{Research Instruments} %Research Instruments
 \subsubsection{Data Collection tools}
-A Web scrapper developed in python \footnote{https://github.com/NkosikhonaD/DataCollection} will be used to collect data from websites that have labeled Lion data.  
+A Web scrapper developed in python \footnote{https://github.com/NkosikhonaD/DataCollection} will be used to collect data from websites that have labeled Lions image data.  
  A semi automatic tool will be developed to allow human beings to label camera traps images. 
  
 \subsubsection{Train-test split}
-A 10-fold cross validation protocol will be followed in training and testing the model performance. Kovavi et al (1995) \cite{kohavi1995study} explained that 10-fold cross validation splits data-set into ten equal parts. Ten runs will be done during training and validation; in each run, one split is left out of the training set and is used as validation set. The accuracy will be calculated as a ratio of the sum correct classification to the total data points \cite{witten2016data}.
+A 10-fold cross validation protocol will be followed in training, testing, and validation of the model performance. Kovavi et al (1995) \cite{kohavi1995study} explained that 10-fold cross validation splits data-set into ten equal parts. The training set will be split : 80\% - 20\%, the 80\% will be used as training and 20\% will be used for testing performance. The test performance will be used to detect if there was over-fitting during training. If the test performance and validation test performance should not be significantly different. If accuracy of on validation set is significantly lower than testing accuracy this may indicate over-fitting. Ten runs will be done during training and validation; in each run, one split is left out of the training set and is used as validation set. The accuracy will be calculated as a ratio of the sum correct classification to the total data points \cite{witten2016data}.
 
 \subsubsection{Baseline comparisons}
 Table \ref{tab:baseline} shows a summary of recent works investigating individual classification of Chimpanzee, Gorilla, and Fruit Flies. Associated features and test  accuracy achieved by the authors are depicted. These works provide benchmark on which the current research outputs will be compared.   
@@ -41,6 +41,7 @@ Fruit Fly & (SCNN) Schneider et al. (2019) \cite{schneider2019similarity} & 244,
 \end{table}
 
 \subsection{Data}
+\subsubsection{Kruger national park data}
 Data from Kruger national park in South Africa will be collected manually, using camera traps.
 Labeling will be done following this criteria: 
 \begin{itemize}
@@ -49,21 +50,33 @@ Labeling will be done following this criteria:
     \item \textit{orientation} : portrait, left, and right
     \item \textit{class} : Lion or Cheetah
 \end{itemize}
+
+\subsubsection{Mara predator conservation project data}
 Data set from Mara predator project in Kenya \footnote{http://www.livingwithlions.org/mara/}  will be automatically collected using Web scrapper, and labels will be obtained from images meta data. The Lion data set is a result of carnivore preservation drive by Frank 2011 \cite{frank2011living} in Kenya. The community was given incentives to report sightings, and the Lions were placed in enclosed areas so as to reduce contact with livestock. Individual Lions were given names and their images saved online. Frank 2011 observed that there was a remarkable decline in the population of Lions in Kenya due to hunting practices, and urge to protect livestock.  
 \subsection{Analysis}
 \subsubsection{Descriptive measures }
 Embedding distances will be computed to show dissimilarity measures between images of the same individual (Lion or Cheetah). On the same note, embedding distances showing dissimilarity between images of different individuals will be computed. Mean dissimilarity measure will be calculated for images of same individual so as to observe clusters in the data set. Intra-class standard deviation will show variation of each individual image embedding from the mean of similarity measures of each image from same individual.  
 
 \subsubsection{Model performance  metrics}
+\textit{Mean Average Precision (mAP)}\newline
+
+Mean average precision (mAP) will be computed to assess the performance of the model. In order to compute mAP a top-$k$ scan, $k$ = 1,10,20, and 50 suggested by M{\"u}ller et al. 2001 \cite{muller2001performance}, will be selected. At each scan, precision \ref{pres:eq} and recall \ref{recall:eq} will be computed. A precision vs recall graph will be plotted, and the area under this graph gives average precision (AP), this area is calculated as shown in equation \ref{ap:eq}.  mAP  will be computed by getting the average of all average precision for individuals found in the data-set.
+
+\begin{equation}\label{ap:eq}
+    AP = \sum(r_{n+1}-r_n)p_{inter}(r_{n+1})
+\end{equation}
+ Where $r_{n+1}$ is recall value at position $n+1$ and $r_n$ is recall at value position $n$ is any real number between 0 and $k$, $p_{inter}$ is maxim precision corresponding to maximum recall at $n+1$ on the  precision vs recall graph. A pytorch library that provides an implementation of computing average precision and mean average precision used in the current work \cite{Collobert2016TorchnetAO}. 
+
+
 A confusion matrix will be used to assess the performance of the model used in classification individual wild animal. A confusion matrix depicts four values: true positive (TP) correct positive predictions, false positive (FP) predicted positive that is incorrect, false negative (FN) negative predictions that were predicted incorrectly, and true negative (TN), predicted negative that is correct \cite{sokolova2009systematic}. Some performance metrics derived from confusion matrix are. 
 \begin{itemize}
     \item \textit{Recall} is  ratio of how many positive classes were correctly predicted to total positive classes \cite{sokolova2009systematic}. Recall is calculated from confusion matrix as : 
-    \begin{equation}
+    \begin{equation} \label{recall:eq}
          Recall  = \frac{TP}{TP+FN}
     \end{equation}{}
    
-    \item \textit{Precision} also referred to as confidence measure is a ratio of total true positives predicted to all positive instances, including false positive \cite{elkan2012evaluating}.    
-     \begin{equation}
+    \item \textit{Precision} also referred to as confidence measure is a ratio of total true positives predicted to all positive instances, including false positive \cite{baeza1999modern}.    
+     \begin{equation}\label{pres:eq}
          Precision  = \frac{TP}{TP+FP}
      \end{equation}{}
      
@@ -78,6 +91,7 @@ A confusion matrix will be used to assess the performance of the model used in c
         \end{equation}{}
     
 \end{itemize}{}
+
 \section{Limitations}
 The results drawn from experiments conducted in the current work are limited to data used, and cannot be generalized to other endangered animal and plant species in the world. In order to draw conclusions on other species there would be a need to extend the current work to include surveys. This is beyond the scope of this work.   
 
