@@ -60,7 +60,7 @@ Embedding distances will be computed to show dissimilarity measures between imag
 \subsubsection{Model performance  metrics}
 \textit{Mean Average Precision (mAP)}\newline
 
-Mean average precision (mAP) will be computed to assess the performance of the model. In order to compute mAP a top-$k$ scan, $k$ = 1,10,20, and 50 suggested by M{\"u}ller et al. 2001 \cite{muller2001performance}, will be selected. At each scan, precision \ref{pres:eq} and recall \ref{recall:eq} will be computed. A precision vs recall graph will be plotted, and the area under this graph gives average precision (AP), this area is calculated as shown in equation \ref{ap:eq}.  mAP  will be computed by getting the average of all average precision for individuals found in the data-set.
+Mean average precision (mAP) will be computed to assess the performance of the model. In order to compute mAP a top-$k$ scan, $k$ = 1,10,20, and 50 suggested by M{\"u}ller et al. 2001 \cite{muller2001performance}, will be selected. At each scan, precision \ref{pres:eq} and recall \ref{recall:eq} will be computed. A precision vs recall graph will be plotted, and the area under this graph gives average precision (AP), this area is calculated as shown in equation \ref{ap:eq}.  mAP  will be computed by getting the average of all average precision for individuals found in the data-set \cite{everingham2015pascal}.
 
 \begin{equation}\label{ap:eq}
     AP = \sum(r_{n+1}-r_n)p_{inter}(r_{n+1})
