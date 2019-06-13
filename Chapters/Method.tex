@@ -20,7 +20,7 @@ A Web scrapper developed in python \footnote{https://github.com/NkosikhonaD/Data
  A semi automatic tool will be developed to allow human beings to label camera traps images. 
  
 \subsubsection{Train-test split}
-A 10-fold cross validation protocol will be followed in training, testing, and validation of the model performance. Kovavi et al (1995) \cite{kohavi1995study} explained that 10-fold cross validation splits data-set into ten equal parts. The training set will be split : 80\% - 20\%, the 80\% will be used as training and 20\% will be used for testing performance. The test performance will be used to detect if there was over-fitting during training. If the test performance and validation test performance should not be significantly different. If accuracy of on validation set is significantly lower than testing accuracy this may indicate over-fitting. Ten runs will be done during training and validation; in each run, one split is left out of the training set and is used as validation set. The accuracy will be calculated as a ratio of the sum correct classification to the total data points \cite{witten2016data}.
+A 10-fold cross validation protocol will be followed in training, testing, and validation of the model performance. \citeauthor{kohavi1995study} \citeyear{kohavi1995study} \cite{kohavi1995study} explained that 10-fold cross validation splits data-set into ten equal parts. The training set will be split : 80\% - 20\%, the 80\% will be used as training and 20\% will be used for testing performance. The test performance will be used to detect if there was over-fitting during training. If the test performance and validation test performance should not be significantly different. If accuracy of on validation set is significantly lower than testing accuracy this may indicate over-fitting. Ten runs will be done during training and validation; in each run, one split is left out of the training set and is used as validation set. The accuracy will be calculated as a ratio of the sum correct classification to the total data points \cite{witten2016data}.
 
 \subsubsection{Baseline comparisons}
 Table \ref{tab:baseline} shows a summary of recent works investigating individual classification of Chimpanzee, Gorilla, and Fruit Flies. Associated features and test  accuracy achieved by the authors are depicted. These works provide benchmark on which the current research outputs will be compared.   
@@ -32,10 +32,10 @@ Table \ref{tab:baseline} shows a summary of recent works investigating individua
 \toprule
 \tabhead{Dataset} & \tabhead{Features} & \tabhead{Total data} & \tabhead{Num Individuals} & \tabhead{Accuracy} \\
 \midrule
-Chimpanzee & (SCNN) Schneider et al. (2019)  \cite{schneider2019similarity} & 5,599 & 90 & 75.5\% \\
-Chimpanzee & (CNN) Deb et al. (2018) \cite{deb2019face} & 5,599 & 90 & 59.87\% \\
-Gorilla Faces  &  (CNN) Deb et al. (2018) \cite{brust2017towards} & 12000 & 147 & 80.3\% \\
-Fruit Fly & (SCNN) Schneider et al. (2019) \cite{schneider2019similarity} & 244,760 & 20 & 79.3\%  \\
+Chimpanzee & (SCNN) \citeauthor{schneider2019similarity} \citeyear{schneider2019similarity} \cite{schneider2019similarity} & 5,599 & 90 & 75.5\% \\
+Chimpanzee & (CNN) \citeauthor{deb2019face} \citeyear{deb2019face} \cite{deb2019face}& 5,599 & 90 & 59.87\% \\
+Gorilla Faces  &  (CNN) \citeauthor{brust2017towards} \citeyear{brust2017towards} \cite{brust2017towards} & 12000 & 147 & 80.3\% \\
+Fruit Fly & (SCNN) \citeauthor{schneider2019similarity} \citeyear{schneider2019similarity} \cite{schneider2019similarity} & 244,760 & 20 & 79.3\%  \\
 \bottomrule\\
 \end{tabular}
 \end{table}
@@ -52,7 +52,7 @@ Labeling will be done following this criteria:
 \end{itemize}
 
 \subsubsection{Mara predator conservation project data}
-Data set from Mara predator project in Kenya \footnote{http://www.livingwithlions.org/mara/}  will be automatically collected using Web scrapper, and labels will be obtained from images meta data. The Lion data set is a result of carnivore preservation drive by Frank 2011 \cite{frank2011living} in Kenya. The community was given incentives to report sightings, and the Lions were placed in enclosed areas so as to reduce contact with livestock. Individual Lions were given names and their images saved online. Frank 2011 observed that there was a remarkable decline in the population of Lions in Kenya due to hunting practices, and urge to protect livestock.  
+Data set from Mara predator project in Kenya \footnote{http://www.livingwithlions.org/mara/}  will be automatically collected using Web scrapper, and labels will be obtained from images meta data. The Lion data set is a result of carnivore preservation drive by \citeauthor{frank2011living} \citeyear{frank2011living} \cite{frank2011living} in Kenya. The community was given incentives to report sightings, and the Lions were placed in enclosed areas so as to reduce contact with livestock. Individual Lions were given names and their images saved online. Frank 2011 observed that there was a remarkable decline in the population of Lions in Kenya due to hunting practices, and urge to protect livestock.  
 \subsection{Analysis}
 \subsubsection{Descriptive measures }
 Embedding distances will be computed to show dissimilarity measures between images of the same individual (Lion or Cheetah). On the same note, embedding distances showing dissimilarity between images of different individuals will be computed. Mean dissimilarity measure will be calculated for images of same individual so as to observe clusters in the data set. Intra-class standard deviation will show variation of each individual image embedding from the mean of similarity measures of each image from same individual.  
@@ -60,7 +60,7 @@ Embedding distances will be computed to show dissimilarity measures between imag
 \subsubsection{Model performance  metrics}
 \textit{Mean Average Precision (mAP)}\newline
 
-Mean average precision (mAP) will be computed to assess the performance of the model. In order to compute mAP a top-$k$ scan, $k$ = 1,10,20, and 50 suggested by M{\"u}ller et al. 2001 \cite{muller2001performance}, will be selected. At each scan, precision \ref{pres:eq} and recall \ref{recall:eq} will be computed. A precision vs recall graph will be plotted, and the area under this graph gives average precision (AP), this area is calculated as shown in equation \ref{ap:eq}.  mAP  will be computed by getting the average of all average precision for individuals found in the data-set \cite{everingham2015pascal}.
+Mean average precision (mAP) will be computed to assess the performance of the model. In order to compute mAP a top-$k$ scan, $k$ = 1,10,20, and 50 suggested by \citeauthor{muller2001performance} \citeyear{muller2001performance} \cite{muller2001performance}, will be selected. At each scan, precision \ref{pres:eq} and recall \ref{recall:eq} will be computed. A precision vs recall graph will be plotted, and the area under this graph gives average precision (AP), this area is calculated as shown in equation \ref{ap:eq}.  mAP  will be computed by getting the average of all average precision for individuals found in the data-set \cite{everingham2015pascal}.
 
 \begin{equation}\label{ap:eq}
     AP = \sum(r_{n+1}-r_n)p_{inter}(r_{n+1})
